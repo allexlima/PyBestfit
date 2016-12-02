@@ -1,16 +1,28 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# By Allex Lima <allexlima@unn.edu.br> | www.allexlima.com
 
 import random
 
-REGISTERS = []
+# List of some MIPS registers available for programs usage
+REGISTERS = ['r2', 'r3', 'r4', 'r5', 'r6', 'r7', 'r8', 'r9', 'r10', 'r11', 'r12', 'r13', 'r14', 'r15']
+
+P_STATES = ['waiting', 'running', 'done']
 
 
-def g_int_value():
-    return int(random.random() * 100)
+def g_int_value(ab=None):
+    val = None
+    if not ab:
+        val = int(random.random() * 100)
+    elif isinstance(ab, tuple):
+        val = random.randint(ab[0], ab[1])
+    return val
 
 
-def g_register_name():
-    random.shuffle(REGISTERS)
-    aux = random.randint(0, len(REGISTERS)-1)
-    return REGISTERS[aux]
+def g_list_value(array):
+    if isinstance(array, list):
+        random.shuffle(array)
+        aux = random.randint(0, len(array)-1)
+        return array[aux]
+    else:
+        pass
