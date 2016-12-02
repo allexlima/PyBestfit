@@ -4,9 +4,10 @@
 
 import random
 
-# List of some MIPS registers available for programs usage
+""" List of some MIPS registers available for programs usage """
 REGISTERS = ['r2', 'r3', 'r4', 'r5', 'r6', 'r7', 'r8', 'r9', 'r10', 'r11', 'r12', 'r13', 'r14', 'r15']
 
+""" List of basic process states, for single-task systems """
 P_STATES = ['waiting', 'running', 'done']
 
 

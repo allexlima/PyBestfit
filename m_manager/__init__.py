@@ -2,6 +2,11 @@
 # -*- coding: utf-8 -*-
 # By Allex Lima <allexlima@unn.edu.br> | www.allexlima.com
 
+from support import *
+from structures import ProcessManager, Memory
+from allocators import *
+
+
 __author__ = "Allex Lima"
 __copyright__ = "Copyright (c) 2016 Allex Lima"
 __credits__ = ["Allex Lima", "Daniel Bispo", "Paulo Moraes", "Renan Barroncas"]
