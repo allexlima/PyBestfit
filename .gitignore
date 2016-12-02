@@ -1,3 +1,8 @@
+#JetBrains Pycharm files
+.idea/
+.idea/**/*
+sys
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
