@@ -41,8 +41,8 @@ class Process(object):
         """
         The process size here follows the computational bits metrics units, according
         Tanenbaum, A. S., & Zucchi, W. L. (2009) and also ISO/IEC 80000.
-        By default in this code, I'll use mebi-bytes as measure unit, i.e. MiB, for the process sizes.
-        So, process size = object.size [attribute is an integer value] + MiB [abstract/convention measure unit]
+        By default in this code, I'll use kibibytes as measure unit, i.e. KiB, for the process sizes.
+        So, process size = object.size [attribute is an integer value] + KiB [abstract/convention measure unit]
         """
         self.size = support.g_int_value()
 
@@ -71,11 +71,23 @@ class ProcessManager(object):
         self.__list = []
 
     def create(self, nome, user):
+        """
+        This method allow the process object creation and put that object in the ProcessList
+        :param nome: Process name
+        :param user: Process owner
+        :return: void
+        """
+
         obj = Process(nome, user)
         self.__insert(obj)
         return obj.pid
 
     def __insert(self, process):
+        """
+        This 'private' method will insert the object process in a Process list through the append list function
+        :param process:
+        :return:
+        """
         self.__list.append(process)
 
     def get(self, pid):
@@ -86,16 +98,26 @@ class ProcessManager(object):
         :return: The process object
         :rtype object
         """
-        return [item for item in self.__list if item.pid == pid][0]
+        try:
+            return next(item for item in self.__list if item.pid == pid)
+        except StopIteration:
+            pass
 
     @staticmethod
     def __listing_style(obj):
+        """
+        This static method is where can be defined the return process style
+        :param obj: Process object
+        :return: Listing of process values
+        :rtype dict
+        """
         return {
             'pid': obj.pid,
             'name': obj.name,
             'user': obj.user,
             'priority': obj.priority,
-            'size': "{0} MiB".format(obj.size),
+            'state': obj.state,
+            'size': "{0} KiB".format(obj.size),
             'start_time': obj.start_time,
             'context': obj.context,
             'memory_addresses': obj.memory_addresses
@@ -104,12 +126,17 @@ class ProcessManager(object):
     def show(self, pid=None):
         """
         This method will show a dictionary with all process' values when it's called
-        :rtype dict
+        If is passed the PID parameter, the method will return just info about this process' PID
+        else, a list of dict within all process in a ProcessList will be returned
+        :rtype dict or list
         """
         aux = None
 
         if pid:
-            aux = ProcessManager.__listing_style(self.get(pid))
+            try:
+                aux = ProcessManager.__listing_style(self.get(pid))
+            except AttributeError:
+                pass
         else:
             aux = []
             for item in range(0, len(self.__list), 1):
@@ -117,7 +144,7 @@ class ProcessManager(object):
 
         return aux
 
-    def delete(self, pid):
+    def kill(self, pid):
         """
         This method will delete the process' object, through PID informed, from
         the __list attribute list.
@@ -128,6 +155,63 @@ class ProcessManager(object):
         self.__list[:] = [item for item in self.__list if item.pid != pid]
 
 
-class Memory(object):
-    pass
+class Block(object):
+    def __init__(self):
+        self.address = None
+        self.size = {
+            'total': None,
+            'available': None
+        }
+        self.content = []
+        self.pseudo_values_maker()
 
+    def pseudo_values_maker(self):
+        self.address = hex(support.g_int_value((10000, 30000)))
+        m_size = support.g_int_value()
+        self.size.update({
+            'total': m_size,
+            'available': m_size
+        })
+
+
+class Memory(object):
+    def __init__(self, width=10):
+        self.__list = []
+        self.width = width
+        self.pseudo_values_maker()
+
+    def get(self, address):
+        try:
+            return next(item for item in self.__list if item.address == address)
+        except StopIteration:
+            pass
+
+    @staticmethod
+    def __listing_style(obj):
+        return {
+            'address': obj.address,
+            'size': {
+                'total': "{0} KiB".format(obj.size['total']),
+                'available': "{0} KiB".format(obj.size['available']),
+            },
+            'content': obj.content
+        }
+
+    def show(self, address=None):
+        aux = None
+
+        if address:
+            try:
+                aux = Memory.__listing_style(self.get(address))
+            except AttributeError:
+                pass
+        else:
+            aux = []
+            for item in range(0, len(self.__list), 1):
+                aux.append(Memory.__listing_style(self.__list[item]))
+
+        return aux
+
+    def pseudo_values_maker(self):
+        for i in range(0, self.width, 1):
+            self.__list.append(Block())
