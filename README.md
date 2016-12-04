@@ -14,8 +14,17 @@ ministered by _Prof.ª Ângela Lima, M.Sc_.
 The best fit deals with an algorithm that searches the first closest memory block size of process size to alloc it one. 
 And as an advantage, best fit provide a memory utilization more optimized. 
 
-You can find a quickly content about more allocation algorithms accessing the last item of [References](#references). 
-For a deep reading about this subject, I recommend the two firsts items of [References](#references).
+You can find a quickly content about more allocation algorithms accessing the last item of [References](https://github.com/allexlima/PyBestfit#references). 
+For a deep reading about this subject, I recommend the two firsts items of [References](https://github.com/allexlima/PyBestfit#references).
+
+### Index
+
+1. [Repo structure](https://github.com/allexlima/PyBestfit#repo-structure) 
+2. [Workspace tips](https://github.com/allexlima/PyBestfit#workspace-tips)
+3. [Requirements](https://github.com/allexlima/PyBestfit#requirements)
+4. [Setup](https://github.com/allexlima/PyBestfit#setup)
+5. [Basic usage](https://github.com/allexlima/basic-usage)
+6. [References](https://github.com/allexlima/PyBestfit#references)
 
 #### Repo structure
 
@@ -84,6 +93,38 @@ I advise you to use these tools to make easier your work and save time:
     ```
     
     - If you want run without graphical interface, enjoy yourself with `cli_testing.py` example.
+
+#### Basic usage
+
+1. Running `app.py`, this window will open:
+
+    ![](https://github.com/allexlima/PyBestfit/blob/master/img/screenshots/1.png?raw=true)
+
+2. You must click on the __Create__ button to generate pseudo-random values, then you can to browse through tabs:
+    
+    - Memory values:
+    
+        ![](https://github.com/allexlima/PyBestfit/blob/master/img/screenshots/2.png?raw=true)
+        
+    - Processes values
+    
+        ![](https://github.com/allexlima/PyBestfit/blob/master/img/screenshots/3.png?raw=true)
+        
+    - And logs:
+    
+        ![](https://github.com/allexlima/PyBestfit/blob/master/img/screenshots/4.png?raw=true)
+        
+3. Now, clicking in __Memory Alloc__ button, you will allocate the generated process in a memory spaces 
+through the best fit algorithm. 
+
+    ![](https://github.com/allexlima/PyBestfit/blob/master/img/screenshots/5.png?raw=true)
+    
+    ![](https://github.com/allexlima/PyBestfit/blob/master/img/screenshots/6.png?raw=true)
+
+4. To generate new values, click in __Update__ button.
+
+5. __Testing mode__ can be checked to use pre-defined values in memory block sizes.
+These values ara in `SIZES` list, available in `nano_os/support.py`.
 
 #### References
 
