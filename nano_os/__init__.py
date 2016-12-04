@@ -4,7 +4,7 @@
 
 from support import *
 from processor import ProcessManager
-from memory import Memory
+from memory import MemoryManager
 
 
 __author__ = "Allex Lima"

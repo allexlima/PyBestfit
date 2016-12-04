@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>BestFit</class>
+ <widget class="QMainWindow" name="BestFit">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Bestfit Memory Allocation Algorithm</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>img/icon.png</normaloff>img/icon.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="memoryAlloc">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>423</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Memory Alloc</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="randomCheck">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>430</y>
+      <width>94</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Random</string>
+    </property>
+   </widget>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>761</width>
+      <height>391</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>1</number>
+    </property>
+    <widget class="QWidget" name="memoryTab">
+     <property name="accessibleName">
+      <string/>
+     </property>
+     <property name="currentTabText" stdset="0">
+      <string/>
+     </property>
+     <attribute name="title">
+      <string>Processes</string>
+     </attribute>
+     <widget class="QTableView" name="tableProcess">
+      <property name="geometry">
+       <rect>
+        <x>-10</x>
+        <y>0</y>
+        <width>771</width>
+        <height>361</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="processTab">
+     <property name="currentTabText" stdset="0">
+      <string>Hello</string>
+     </property>
+     <property name="Oi" stdset="0">
+      <string/>
+     </property>
+     <attribute name="title">
+      <string>Memory</string>
+     </attribute>
+     <widget class="QTableView" name="tableMemory">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>771</width>
+        <height>361</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="logTab">
+     <attribute name="title">
+      <string>Logs</string>
+     </attribute>
+     <widget class="QTextEdit" name="logView">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>761</width>
+        <height>361</height>
+       </rect>
+      </property>
+      <property name="autoFormatting">
+       <set>QTextEdit::AutoAll</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+      <property name="tabStopWidth">
+       <number>20</number>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuAjudar">
+    <property name="title">
+     <string>More</string>
+    </property>
+    <addaction name="actionGithub"/>
+    <addaction name="actionTeam"/>
+   </widget>
+   <addaction name="menuAjudar"/>
+  </widget>
+  <action name="actionGithub">
+   <property name="icon">
+    <iconset>
+     <normaloff>img/github.png</normaloff>img/github.png</iconset>
+   </property>
+   <property name="text">
+    <string>Github</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionTeam">
+   <property name="icon">
+    <iconset>
+     <normaloff>img/about.png</normaloff>img/about.png</iconset>
+   </property>
+   <property name="text">
+    <string>About</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

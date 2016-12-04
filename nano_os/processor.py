@@ -11,7 +11,6 @@ class Process(object):
         self.pid = None
         self.name = name
         self.context = {}
-        self.memory_addresses = []
         self.user = user
         self.priority = None
         self.size = None
@@ -45,6 +44,8 @@ class Process(object):
         So, process size = object.size [attribute is an integer value] + KiB [abstract/convention measure unit]
         """
         self.size = support.g_int_value()
+        if support.TESTING is True:
+            self.size = support.g_int_value((support.SIZES[0], support.SIZES[-1]))
 
         """
         Update context attribute [it's a dict structure] with {register: 0xVALUE}.
@@ -87,8 +88,7 @@ class ProcessManager(object):
             'size': "{0} KiB".format(obj.size),
             'start_time': obj.start_time,
             'context': obj.context,
-            'memory_addresses': obj.memory_addresses
-        }
+        } if support.TESTING is not True else {'pid': obj.pid, 'size': "{0} KiB".format(obj.size)}
 
     def __insert(self, process):
         """

@@ -10,11 +10,14 @@ REGISTERS = ['r2', 'r3', 'r4', 'r5', 'r6', 'r7', 'r8', 'r9', 'r10', 'r11', 'r12'
 """ List of basic process states, for single-task systems """
 P_STATES = ['waiting', 'running', 'done']
 
+TESTING = False
+SIZES = [10, 20, 30, 40]
+
 
 def g_int_value(ab=None):
     val = None
     if not ab:
-        val = int(random.random() * 100)
+        val = int(random.random() * 100) + 1
     elif isinstance(ab, tuple):
         val = random.randint(ab[0], ab[1])
     return val

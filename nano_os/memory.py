@@ -6,22 +6,24 @@ import support
 
 
 class Block(object):
-    def __init__(self):
+    def __init__(self, size=None):
         self.address = None
         self.size = {
-            'total': None,
-            'available': None
+            'total': size,
+            'available': size
         }
         self.content = []
         self.__pseudo_values_maker()
 
     def __pseudo_values_maker(self):
         self.address = hex(support.g_int_value((10000, 30000)))
-        m_size = support.g_int_value()
-        self.size.update({
-            'total': m_size,
-            'available': m_size
-        })
+
+        if support.TESTING is not True:
+            m_size = support.g_int_value()
+            self.size.update({
+                'total': m_size,
+                'available': m_size
+            })
 
 
 class Memory(object):
@@ -32,7 +34,10 @@ class Memory(object):
 
     def __pseudo_values_maker(self):
         for i in range(0, self.width, 1):
-            self.__list.append(Block())
+            if support.TESTING is True:
+                self.__list.append(Block(support.SIZES[i]))
+            else:
+                self.__list.append(Block)
 
     def get_block(self, address):
         try:
@@ -44,45 +49,81 @@ class Memory(object):
         return self.__list
 
     def alloc_in(self, obj, address):
-        block = self.get_block(address)
-        block.content.append(obj)
+        try:
+            block = self.get_block(address)
+            block.content.append(obj)
+            block.size.update({
+                'available': block.size['total'] - obj.size
+            })
+        except AttributeError:
+           pass
+
 
 
 class MemoryManager(Memory):
     def __init__(self, m_blocks_quantity=10):
         super(MemoryManager, self).__init__(m_blocks_quantity)
+        self.memory = self.get_array()
 
     @staticmethod
     def __listing_style(obj):
         return {
-            'address': obj.address,
+            # 'address': obj.address,
             'size': {
                 'total': "{0} KiB".format(obj.size['total']),
                 'available': "{0} KiB".format(obj.size['available']),
             },
-            'content': obj.content
+            'content': [{'pid': item.pid, 'size': '{0} KiB'.format(item.size)} for item in obj.content]
         }
 
-    def __best_fit(self, process_size):
-        pass
+    def binary_search(self, value, vector):
+        middle = int(len(vector)/2)
+
+        if len(vector) == 2:
+            return vector
+        elif value > vector[middle]:
+            return self.binary_search(value, vector[middle:])
+        elif value < vector[middle]:
+            return self.binary_search(value, vector[:middle+1])
+
+    def best_fit(self, process):
+        process_size = process.size
+        distance = 1000
+        best_position = None
+
+        for i in range(0, len(self.memory)):
+            block_size = self.memory[i].size['available']
+            if abs(block_size - process_size) < distance and block_size >= process_size:
+                best_position = i
+                distance = abs(block_size - process_size)
+
+        if best_position is not None:
+            return self.memory[best_position].address
+        else:
+            print "\n-- [!] Could not find an available space for process {0}.".format(process.pid)
 
     def alloc(self, obj):
-        pass
+        address = self.best_fit(obj)
+        if address is not None:
+            self.alloc_in(obj, address)
+            return address
+        else:
+            pass
 
     def free(self, address):
-        pass
+        self.get_block(address)
 
     def show(self, address=None):
         aux = None
 
         if address:
             try:
-                aux = MemoryManager.__listing_style(self.get(address))
+                aux = MemoryManager.__listing_style(self.get_block(address))
             except AttributeError:
                 pass
         else:
             aux = []
-            for item in range(0, len(self.__list), 1):
-                aux.append(MemoryManager.__listing_style(self.__list[item]))
+            for item in range(0, len(self.memory), 1):
+                aux.append(MemoryManager.__listing_style(self.memory[item]))
 
         return aux
