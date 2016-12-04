@@ -80,19 +80,30 @@ I advise you to use these tools to make easier your work and save time:
 #### Setup
 
 1. Clone the repo
-
+            
     ```bash
-	$ git clone https://github.com/allexlima/PyBestfit.git
-	$ cd PyBestfit/
-	```
+    $ git clone https://github.com/allexlima/PyBestfit.git
+    $ cd PyBestfit/
+    ```
 
 2. Run **PyBestfit**
-    
-    ```bash
-	$ python app.py
-    ```
-    
-    - If you want run without graphical interface, enjoy yourself with `cli_testing.py` example.
+   
+   - You can install PyBestfit in your Debian-based system running `setup.sh` file as sudo or root:
+   
+        ```bash
+        $ sudo ./setup.sh
+        ```   
+        
+        and type `i` to proceed installation
+   
+   - Or just run it:
+   
+        ```bash
+        $ python app.py
+        ```   
+        
+   - If you want run without graphical interface, enjoy yourself with `cli_testing.py` example.
+            
 
 #### Basic usage
 

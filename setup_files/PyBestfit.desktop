@@ -1,0 +1,10 @@
+[Desktop Entry]
+
+Version=1.0
+Name=PyBestfit
+Comment=Memory allocation simulator using best fit algorithm
+Terminal=false
+Categories=Education
+Type=Application
+Icon=/opt/PyBestfit/img/icon.png
+Exec=python /opt/PyBestfit/app.py
