@@ -14,8 +14,8 @@ ministered by _Prof.ª Ângela Lima, M.Sc_.
 The best fit deals with an algorithm that searches the first closest memory block size of process size to alloc it one. 
 And as an advantage, best fit provide a memory utilization more optimized. 
 
-You can find a quickly content about more allocation algorithms accessing the last item of [References](#References). 
-For a deep reading about this subject, I recommend the two firsts items of [References](#References).
+You can find a quickly content about more allocation algorithms accessing the last item of [References](#references). 
+For a deep reading about this subject, I recommend the two firsts items of [References](#references).
 
 #### Repo structure
 
@@ -88,7 +88,7 @@ I advise you to use these tools to make easier your work and save time:
 #### References
 
 1. Tanenbaum, A. S., & Bos, H. (2014). _Modern operating systems_. Prentice Hall Press.
-2. Maziero, C. A. (2013). _Sistemas Operacionais: Conceitos e Mecanismos_. Online: http://dainf. ct. utfpr. edu. br/~ maziero/lib/exe/fetch. php/so: so-cap09.
+2. Maziero, C. A. (2013). _Sistemas Operacionais: Conceitos e Mecanismos_. Online: http://dainf.ct.utfpr.edu.br/~maziero/lib/exe/fetch.php/so:so-cap09.
 3. Summerfield, M. (2007). _Rapid GUI programming with Python and Qt: the definitive guide to PyQt programming_. Pearson Education.
 
 ##### Support links
