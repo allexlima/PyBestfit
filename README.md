@@ -119,11 +119,13 @@ through the best fit algorithm.
 
     - Memory Tab:
     
-    ![](https://github.com/allexlima/PyBestfit/blob/master/img/screenshots/5.png?raw=true)
+        ![](https://github.com/allexlima/PyBestfit/blob/master/img/screenshots/5.png?raw=true)
+        
+        _P.S._: The memory content is represented by `PROCESS_ID: PROCESS_SIZE`
     
      - Processes Tab:
     
-    ![](https://github.com/allexlima/PyBestfit/blob/master/img/screenshots/6.png?raw=true)
+        ![](https://github.com/allexlima/PyBestfit/blob/master/img/screenshots/6.png?raw=true)
 
 4. To generate new values, click in __Update__ button.
 
