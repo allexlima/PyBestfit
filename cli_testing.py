@@ -9,7 +9,7 @@ if __name__ == "__main__":
 
     myos.TESTING = True
 
-    memory_m = myos.MemoryManager(len(myos.SIZES))
+    memory_m = myos.MemoryManager()
     process_m = myos.ProcessManager()
 
     p1 = process_m.create("a.cpp", "allex")

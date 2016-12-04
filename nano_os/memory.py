@@ -37,7 +37,7 @@ class Memory(object):
             if support.TESTING is True:
                 self.__list.append(Block(support.SIZES[i]))
             else:
-                self.__list.append(Block)
+                self.__list.append(Block())
 
     def get_block(self, address):
         try:
@@ -55,20 +55,20 @@ class Memory(object):
             block.size.update({
                 'available': block.size['total'] - obj.size
             })
+            obj.state = support.P_STATES[1]
         except AttributeError:
-           pass
-
+            pass
 
 
 class MemoryManager(Memory):
     def __init__(self, m_blocks_quantity=10):
-        super(MemoryManager, self).__init__(m_blocks_quantity)
+        super(MemoryManager, self).__init__(m_blocks_quantity if support.TESTING is not True else len(support.SIZES))
         self.memory = self.get_array()
 
     @staticmethod
     def __listing_style(obj):
         return {
-            # 'address': obj.address,
+            'address': obj.address,
             'size': {
                 'total': "{0} KiB".format(obj.size['total']),
                 'available': "{0} KiB".format(obj.size['available']),
@@ -100,7 +100,7 @@ class MemoryManager(Memory):
         if best_position is not None:
             return self.memory[best_position].address
         else:
-            print "\n-- [!] Could not find an available space for process {0}.".format(process.pid)
+            support.ERRORS.append("[Warning] Could not find an available space for process {0}.".format(process.pid))
 
     def alloc(self, obj):
         address = self.best_fit(obj)

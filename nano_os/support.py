@@ -13,6 +13,8 @@ P_STATES = ['waiting', 'running', 'done']
 TESTING = False
 SIZES = [10, 20, 30, 40]
 
+ERRORS = []
+
 
 def g_int_value(ab=None):
     val = None
