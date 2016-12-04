@@ -117,14 +117,18 @@ I advise you to use these tools to make easier your work and save time:
 3. Now, clicking in __Memory Alloc__ button, you will allocate the generated process in a memory spaces 
 through the best fit algorithm. 
 
+    - Memory Tab:
+    
     ![](https://github.com/allexlima/PyBestfit/blob/master/img/screenshots/5.png?raw=true)
+    
+     - Processes Tab:
     
     ![](https://github.com/allexlima/PyBestfit/blob/master/img/screenshots/6.png?raw=true)
 
 4. To generate new values, click in __Update__ button.
 
 5. __Testing mode__ can be checked to use pre-defined values in memory block sizes.
-These values ara in `SIZES` list, available in `nano_os/support.py`.
+These values are in `SIZES` list, available in `nano_os/support.py`.
 
 #### References
 
