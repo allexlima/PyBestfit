@@ -22,7 +22,7 @@ class Process(object):
         """
         In this method, I'll generate the values for process attributes.
         The majority of the values are sorted pseudo-randomly by g_int_value([ab]) function,
-        in m_manage/support.py.
+        in nano_os/support.py.
         :return void
         """
 
