@@ -101,7 +101,7 @@ class Memory(object):
             block = self.get_block(address)
             block.content.append(obj)
             block.size.update({
-                'available': block.size['total'] - obj.size
+                'available': block.size['available'] - obj.size
             })
             obj.state = support.P_STATES[1]
         except AttributeError:
