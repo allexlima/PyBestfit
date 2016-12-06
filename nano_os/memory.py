@@ -3,6 +3,7 @@
 # By Allex Lima <allexlima@unn.edu.br> | www.allexlima.com
 
 import support
+from  threading import Thread
 
 
 class Block(object):
@@ -103,7 +104,10 @@ class MemoryManager(Memory):
     def alloc(self, obj):
         address = self.best_fit(obj)
         if address is not None:
-            self.alloc_in(obj, address)
+            my_thread = Thread(target=self.alloc_in, args=(obj, address))
+            my_thread.start()
+            my_thread.join()
+            # self.alloc_in(obj, address)
             return address
         else:
             pass
