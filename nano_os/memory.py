@@ -3,6 +3,7 @@
 # By Allex Lima <allexlima@unn.edu.br> | www.allexlima.com
 
 import support
+from threading import Thread
 
 
 class Block(object):
@@ -201,7 +202,24 @@ class MemoryManager(Memory):
         """
         address = self.best_fit(obj)
         if address is not None:
-            self.alloc_in(obj, address)
+            """
+            Create a thread to alloc process informing the Process Object and the Block Address attribute
+            where it will be allocated
+            """
+            my_thread = Thread(target=self.alloc_in, args=(obj, address))
+            """
+            Start the thread
+            """
+            my_thread.start()
+
+            """
+            Join the response to current context
+            """
+            my_thread.join()
+
+            """
+            Return the address where the Process Object was allocated
+            """
             return address
         else:
             pass
